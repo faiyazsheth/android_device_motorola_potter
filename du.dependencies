@@ -1,0 +1,47 @@
+[
+  {
+    "repository":   "DirtyUnicorns/android_kernel_motorola_msm8953",
+    "target_path":  "kernel/motorola/msm8953",
+    "branch":       "o8x-caf"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_external_bson",
+    "target_path":  "external/bson",
+    "branch":       "o8x-caf"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_hardware_qcom_audio",
+    "target_path":  "hardware/qcom/audio-caf/msm8937",
+    "branch":       "o8x-caf-8937"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_hardware_qcom_display",
+    "target_path":  "hardware/qcom/display-caf/msm8937",
+    "branch":       "o8x-caf-8937"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_hardware_qcom_media",
+    "target_path":  "hardware/qcom/media-caf/msm8937",
+    "branch":       "o8x-caf-8937"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_hardware_qcom_fm",
+    "target_path":  "hardware/qcom/fm",
+    "branch":       "o8x-caf"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_packages_apps_FMRadio",
+    "target_path":  "packages/apps/FMRadio",
+    "branch":       "o8x-caf"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_system_qcom",
+    "target_path":  "system/qcom",
+    "branch":       "o8x-caf"
+  },
+  {
+    "repository":   "DirtyUnicorns/android_vendor_motorola",
+    "target_path":  "vendor/motorola",
+    "branch":       "o8x-caf"
+  }
+]
