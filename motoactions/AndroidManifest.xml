@@ -36,50 +36,49 @@
         </service>
 
         <activity
-            android:name=".DozeSettingsActivity"
+            android:name=".DozeSettings"
             android:label="@string/ambient_display_title"
             android:theme="@style/MotoActions">
             <intent-filter>
-                <action android:name="com.dirtyunicorns.settings.device.DOZE_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".ActionsPreferenceActivity"
+            android:name=".TouchscreenGestureSettings"
             android:label="@string/moto_actions_title"
             android:summary="@string/device_gestures_summary"
             android:theme="@style/MotoActions">
             <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.homepage" />
-            <meta-data
-                android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_settings_gestures" />
-            <meta-data
-                android:name="com.android.settings.summary"
-                android:resource="@string/device_gestures_summary" />
         </activity>
 
         <activity
             android:name=".GestureSettingsActivity"
             android:label="@string/device_gestures_title"
             android:theme="@style/MotoActions">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".FPGestureSettingsActivity"
             android:label="@string/fingerprint_gestures_title"
             android:theme="@style/MotoActions">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".ScreenOffGestureSettingsActivity"
             android:label="@string/screen_off_gestures_title"
             android:theme="@style/MotoActions">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
         </activity>
 
     </application>

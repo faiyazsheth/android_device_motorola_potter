@@ -20,14 +20,14 @@ import android.os.Bundle;
 
 import android.preference.PreferenceActivity;
 
-public class ActionsPreferenceActivity extends PreferenceActivity {
+public class DozeSettings extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null){
             getFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, new ActionsPreferenceFragment()).commit();
+                    .replace(android.R.id.content, new DozeSettingsFragment()).commit();
         }
     }
 }
