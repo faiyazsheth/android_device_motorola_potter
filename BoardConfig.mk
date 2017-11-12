@@ -20,6 +20,9 @@ DEVICE_PATH := device/motorola/potter
 
 BOARD_VENDOR := motorola-qcom
 
+# Dexpreopt
+WITH_DEXPREOPT := true
+
 # AIDs and CAPS
 TARGET_ALLOW_LEGACY_AIDS := true
 TARGET_FS_CONFIG_GEN := \
