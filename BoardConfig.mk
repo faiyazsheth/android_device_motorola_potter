@@ -22,6 +22,7 @@ BOARD_VENDOR := motorola-qcom
 
 # Dexpreopt
 WITH_DEXPREOPT := true
+DONT_DEXPREOPT_PREBUILTS := true
 
 # AIDs and CAPS
 TARGET_ALLOW_LEGACY_AIDS := true
