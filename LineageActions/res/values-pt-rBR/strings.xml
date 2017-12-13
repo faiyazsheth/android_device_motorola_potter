@@ -23,9 +23,6 @@
     <string name="device_gestures_title">Gestos do dispositivo</string>
     <string name="device_gestures_summary">Gerenciar os gestos do dispositivo</string>
 
-    <!-- Ambient display gestures -->
-    <string name="ambient_display_manage_summary">Gerenciar os gestos da tela ambiente</string>
-
     <!-- Fingerprint gestures -->
     <string name="fingerprint_gestures_title">Gestos no sensor biométrico</string>
     <string name="fingerprint_gestures_summary">Habilitar o uso de gestos no sensor biométrico</string>
