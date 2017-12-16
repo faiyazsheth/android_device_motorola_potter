@@ -319,4 +319,5 @@
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
+    <integer name="config_deviceHardwareKeys">83</integer>
 </resources>
