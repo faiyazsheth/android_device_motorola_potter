@@ -34,15 +34,26 @@ import org.lineageos.settings.device.actions.FlipToMute;
 import org.lineageos.settings.device.actions.LiftToSilence;
 import org.lineageos.settings.device.actions.ProximitySilencer;
 
-public class LineageActionsService extends IntentService implements UpdatedStateNotifier {
+import org.lineageos.settings.device.doze.DozePulseAction;
+import org.lineageos.settings.device.doze.GlanceSensor;
+import org.lineageos.settings.device.doze.ProximitySensor;
+import org.lineageos.settings.device.doze.ScreenReceiver;
+import org.lineageos.settings.device.doze.ScreenStateNotifier;
+import org.lineageos.settings.device.doze.StowSensor;
+
+public class LineageActionsService extends IntentService implements ScreenStateNotifier,
+        UpdatedStateNotifier {
     private static final String TAG = "LineageActions";
 
     private final Context mContext;
 
+    private final DozePulseAction mDozePulseAction;
     private final PowerManager mPowerManager;
     private final PowerManager.WakeLock mWakeLock;
+    private final ScreenReceiver mScreenReceiver;
     private final SensorHelper mSensorHelper;
 
+    private final List<ScreenStateNotifier> mScreenStateNotifiers = new LinkedList<ScreenStateNotifier>();
     private final List<UpdatedStateNotifier> mUpdatedStateNotifiers =
                         new LinkedList<UpdatedStateNotifier>();
 
@@ -54,6 +65,15 @@ public class LineageActionsService extends IntentService implements UpdatedState
 
         LineageActionsSettings lineageActionsSettings = new LineageActionsSettings(context, this);
         mSensorHelper = new SensorHelper(context);
+        mScreenReceiver = new ScreenReceiver(context, this);
+
+        mDozePulseAction = new DozePulseAction(context);
+        mScreenStateNotifiers.add(mDozePulseAction);
+
+        // Actionable sensors get screen on/off notifications
+        mScreenStateNotifiers.add(new GlanceSensor(lineageActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new ProximitySensor(lineageActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new StowSensor(lineageActionsSettings, mSensorHelper, mDozePulseAction));
 
         // Other actions that are always enabled
         mUpdatedStateNotifiers.add(new CameraActivationSensor(lineageActionsSettings, mSensorHelper));
@@ -71,7 +91,32 @@ public class LineageActionsService extends IntentService implements UpdatedState
     protected void onHandleIntent(Intent intent) {
     }
 
+    @Override
+    public void screenTurnedOn() {
+            if (!mWakeLock.isHeld()) {
+                mWakeLock.acquire();
+            }
+        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
+            screenStateNotifier.screenTurnedOn();
+        }
+    }
+
+    @Override
+    public void screenTurnedOff() {
+            if (mWakeLock.isHeld()) {
+                mWakeLock.release();
+            }
+        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
+            screenStateNotifier.screenTurnedOff();
+        }
+    }
+
     public void updateState() {
+        if (mPowerManager.isInteractive()) {
+            screenTurnedOn();
+        } else {
+            screenTurnedOff();
+        }
         for (UpdatedStateNotifier notifier : mUpdatedStateNotifiers) {
             notifier.updateState();
         }
