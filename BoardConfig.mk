@@ -21,7 +21,7 @@ DEVICE_PATH := device/motorola/potter
 BOARD_VENDOR := motorola-qcom
 
 # Dexpreopt
-WITH_DEXPREOPT := true
+WITH_DEXPREOPT ?= true
 DONT_DEXPREOPT_PREBUILTS := true
 
 # AIDs and CAPS
