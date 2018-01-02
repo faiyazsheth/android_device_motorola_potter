@@ -211,7 +211,8 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    libshim_ims
+    libshim_ims \
+    ims-ext-common
 
 # IPA Manager
 PRODUCT_PACKAGES += \
