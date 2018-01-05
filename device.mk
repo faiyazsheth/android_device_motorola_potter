@@ -174,7 +174,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service \
+    android.hardware.biometrics.fingerprint@2.1-service_32 \
     fingerprint.msm8953
 
 # FM
@@ -339,7 +339,11 @@ PRODUCT_PACKAGES += \
     libshim_ril \
     libprotobuf-cpp-full \
     libxml2 \
-    rild_socket
+    rild_socket \
+    rild_32
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rild/rild.rc:system/vendor/etc/init/rild.rc
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
