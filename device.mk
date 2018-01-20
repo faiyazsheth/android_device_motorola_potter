@@ -132,10 +132,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
     $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
 
-# MotoActions
-PRODUCT_PACKAGES += \
-    MotoActions
-
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8953 \
@@ -432,3 +428,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
+
+# MotoActions
+PRODUCT_PACKAGES += \
+MotoActions
