@@ -169,7 +169,7 @@ on boot
    chmod 0660 /sys/module/phy_msm_usb/parameters/host_mode_disable
    chown root oem_5004 /sys/devices/soc/7000000.ssusb/disable_id_pin
    chmod 0220 /sys/devices/soc/7000000.ssusb/disable_id_pin
-    
+
    # change permission for capsensor
    chmod 0660 /sys/class/capsense/enable
    chown system system sys/class/capsense/enable
@@ -299,11 +299,6 @@ service adspd /system/vendor/bin/adspd
    socket adspdsock stream 0660 system audio
    user audio
    group audio input diag
-
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-    group input
 
 service mmi-boot-sh /system/vendor/bin/sh /system/vendor/bin/init.mmi.boot.sh
     class core
